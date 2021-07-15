@@ -29,8 +29,6 @@ public class CategoryController extends BaseController{
         request.setAttribute("retList",StringUtils.isBlank(category) ?
                 categoryMapper.selectList(null):
                 categoryMapper.getLike("%"+category+"%"));
-
-
         return "/category/list";
     }
     //  <a>是超链接，可以打开一个页面
