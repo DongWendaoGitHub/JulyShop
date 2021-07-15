@@ -9,6 +9,9 @@ import java.util.List;
 
 public interface ProductMapper extends BaseMapper<ProductBean> {
     //根据类别id查询该类别下对应的商品列表
-    @Select("select * from tbl_product where cid= #{cid}")
+    @Select("select tbl_product.*,tbl_category.category from tbl_product left join tbl_category on tbl_product.cid = tbl_category.id where cid= #{cid}")
     List<ProductBean> getProduct(@Param("cid")int cid);
+
+    @Select("select * from tbl_product where hot=1")
+    List<ProductBean> getHot();
 }

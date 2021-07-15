@@ -25,8 +25,8 @@
 </div>
 <form class="form-inline">
     <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
-        <a  class="btn btn-success"  href="/product/add?cid=${cid}">添加商品</a>
-        <a class="btn btn-warning" href="/category/list">返回上一级</a>
+        <a class="btn btn-warning" href="/product/list">返回上一级</a>
+        <a class="btn btn-default" href="#">本订单为${(bean.id)!} 号订单</a>
     </div>
     <div class="row" style="padding:15px; padding-top:0px; ">
         <table class="table  table-condensed table-striped">
@@ -37,33 +37,27 @@
                 <th>剩余数量</th>
                 <th>logo</th>
                 <th>热卖</th>
-                <th>类别</th>
-                <th>操作</th>
+                <th>购买数量</th>
             </tr>
             <#list retList as bean>
-            <tr>
-                <td>${(bean.id)!}</td>
-                <td>${(bean.product)!}</td>
-                <td>${(bean.price)!}元</td>
-                <td>${(bean.num)!}个</td>
-                <td>
-                    <a href="${(bean.logo)!}" target="_blank">
-                        ${(bean.logo)!}
-                    </a>
-                </td>
-                <td>
-                    <#if bean.hot == 1>热卖</#if>
-                    <#if bean.hot == 0>非热卖</#if>
-                </td>
-                <td>
-                    ${(bean.category)!}
-                </td>
-
-                <th>
-                    <a href="/product/add?id=${bean.id}&cid=${cid}">修改</a>
-                    <a href="/product/del?id=${bean.id}&cid=${cid}">删除</a>
-                </th>
-            </tr>
+                <tr>
+                    <td>${(bean.id)!}</td>
+                    <td>${(bean.product)!}</td>
+                    <td>${(bean.price)!}元</td>
+                    <td>${(bean.num)!}个</td>
+                    <td>
+                        <a href="${(bean.logo)!}" target="_blank">
+                            ${(bean.logo)!}
+                        </a>
+                    </td>
+                    <td>
+                        <#if bean.hot == 1>热卖</#if>
+                        <#if bean.hot == 0>非热卖</#if>
+                    </td>
+                    <td>
+                        ${(bean.count)!}
+                    </td>
+                </tr>
             </#list>
 
         </table>

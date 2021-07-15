@@ -2,6 +2,7 @@ package com.boot.shop.controller;
 
 import com.boot.shop.bean.CategoryBean;
 import com.boot.shop.mapper.CategoryMapper;
+import com.boot.shop.mapper.ProductMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Locale;
 
 @Controller
 @RequestMapping("/category")
@@ -19,10 +19,18 @@ public class CategoryController extends BaseController{
     @Autowired
     private CategoryMapper categoryMapper;
 
+    @Autowired
+    private ProductMapper productMapper;
+
     //localhost:8080/category/list
     @RequestMapping("/list")
-    public String list(HttpServletRequest request){
-        request.setAttribute("retList",categoryMapper.selectList(null));
+    public String list(String category, HttpServletRequest request){
+        request.setAttribute("category",category);
+        request.setAttribute("retList",StringUtils.isBlank(category) ?
+                categoryMapper.selectList(null):
+                categoryMapper.getLike("%"+category+"%"));
+
+
         return "/category/list";
     }
     //  <a>是超链接，可以打开一个页面
@@ -63,6 +71,9 @@ public class CategoryController extends BaseController{
     @RequestMapping("/del")
     public String del(int id){
         categoryMapper.deleteById(id);
+        //假如没有外键的级联操作
+        //再去删去商品表中对应类别的商品
+
         return "redirect:/category/list";//重新查询列表数据
     }
 }

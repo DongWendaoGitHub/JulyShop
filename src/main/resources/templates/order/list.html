@@ -19,53 +19,38 @@
 <body>
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; " >
-        <li><a href="#">商品管理</a></li>
-        <li>查询商品</li>
+        <li><a href="#">类别管理</a></li>
+        <li>查询类别</li>
     </ul>
 </div>
 <form class="form-inline">
     <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
-        <a  class="btn btn-success"  href="/product/add?cid=${cid}">添加商品</a>
-        <a class="btn btn-warning" href="/category/list">返回上一级</a>
+        <a  class="btn btn-success"  href="#">查询订单</a>
     </div>
     <div class="row" style="padding:15px; padding-top:0px; ">
         <table class="table  table-condensed table-striped">
             <tr>
                 <th>编号</th>
-                <th>商品</th>
-                <th>单价</th>
-                <th>剩余数量</th>
-                <th>logo</th>
-                <th>热卖</th>
-                <th>类别</th>
+                <th>姓名</th>
+                <th>手机</th>
+                <th>地址</th>
+                <th>总价</th>
+                <th>下单时间</th>
                 <th>操作</th>
             </tr>
             <#list retList as bean>
             <tr>
                 <td>${(bean.id)!}</td>
-                <td>${(bean.product)!}</td>
-                <td>${(bean.price)!}元</td>
-                <td>${(bean.num)!}个</td>
-                <td>
-                    <a href="${(bean.logo)!}" target="_blank">
-                        ${(bean.logo)!}
-                    </a>
-                </td>
-                <td>
-                    <#if bean.hot == 1>热卖</#if>
-                    <#if bean.hot == 0>非热卖</#if>
-                </td>
-                <td>
-                    ${(bean.category)!}
-                </td>
-
+                <td>${(bean.name)!}</td>
+                <td>${(bean.mobile)!}</td>
+                <td>${(bean.address)!}</td>
+                <td>${(bean.total)!}元</td>
+                <td>${(bean.ctime)?string('yyyy-MM-dd HH:mm')}</td>
                 <th>
-                    <a href="/product/add?id=${bean.id}&cid=${cid}">修改</a>
-                    <a href="/product/del?id=${bean.id}&cid=${cid}">删除</a>
+                    <a href="/order/product?oid=${bean.id}">查看</a>
                 </th>
             </tr>
             </#list>
-
         </table>
     </div>
 </form>

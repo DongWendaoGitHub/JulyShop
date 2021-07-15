@@ -1,16 +1,36 @@
 package com.boot.shop.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.boot.shop.util.NotNull;
 
 @TableName("tbl_product")
 public class ProductBean {
+    //增删改都不会起作用，只有查询的时候才会起作用
+    @TableField(exist = false)//数据表里面没有这个字段，硬写进去的
+    private String category;
+    @TableField(exist = false)
+    private Integer count;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    @NotNull
     private String product;
+    @NotNull
     private Integer price;
+    @NotNull
     private Integer num;
+    @NotNull
     private String logo;
     private Integer hot;
     private Integer cid;
@@ -69,5 +89,13 @@ public class ProductBean {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }
