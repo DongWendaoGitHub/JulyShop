@@ -26,7 +26,7 @@
 <form class="form-inline" method="get" action="/comment/list">
     <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
         <div class="form-group">
-            <label class="" for="activename">用户名称：</label>
+            <label class="" for="activename">用户id：</label>
             <input type="text" value="${uid!}" class="form-control" name="uid" >
         </div>
         <input type="submit"  class="btn btn-danger" value="查询"/>
@@ -38,15 +38,16 @@
                 <th>评论内容</th>
                 <th>评论日期</th>
                 <th>评论用户id</th>
+                <th>操作</th>
             </tr>
             <#list retList as bean>
             <tr>
                 <td>${(bean.id)!}</td>
                 <td>${(bean.comment)!}</td>
-                <td>${(bean.cdata)!}</td>
+                <td>${(bean.cdate)?string('yyyy-MM-dd HH:mm')}</td>
                 <td>${(bean.uid)!}</td>
                 <th>
-                    <a href="/product/del?id=${bean.id}">删除</a>
+                    <a href="/comment/del?id=${(bean.id)!}">删除</a>
                 </th>
             </tr>
             </#list>

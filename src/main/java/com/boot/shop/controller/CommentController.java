@@ -27,6 +27,6 @@ public class CommentController extends BaseController{
     @GetMapping("/del")
     public String del(int id){
         commentMapper.deleteById(id);
-        return "/comment/list";
+        return "/comment/list?uid=";
     }
 }

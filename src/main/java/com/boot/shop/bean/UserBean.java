@@ -18,7 +18,8 @@ public class UserBean {
 	//Integer可以接受null类型
 	private String username;
 	private String password;
-	
+
+
 	//生成set、get方法
 	public Integer getId() {
 		return id;
@@ -38,5 +39,50 @@ public class UserBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	private String address;
+	private String mobile;
+	private int ulimit;
+	private int consume;
+	private double discount;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public int getLimit() {
+		return ulimit;
+	}
+
+	public void setLimit(int limit) {
+		this.ulimit = limit;
+	}
+
+	public int getConsume() {
+		return consume;
+	}
+
+	public void setConsume(int consume) {
+		this.consume = consume;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
 }

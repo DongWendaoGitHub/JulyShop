@@ -74,4 +74,6 @@ public class WxController extends BaseController{
         }
         outRespJson(r,response);
     }
+
+
 }

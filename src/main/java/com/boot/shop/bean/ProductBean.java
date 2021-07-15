@@ -34,6 +34,8 @@ public class ProductBean {
     private String logo;
     private Integer hot;
     private Integer cid;
+    private Integer sale;
+    private Integer cmid;
 
     public Integer getId() {
         return id;
@@ -97,5 +99,21 @@ public class ProductBean {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public Integer getSale() {
+        return sale;
+    }
+
+    public void setSale(Integer sale) {
+        this.sale = sale;
+    }
+
+    public Integer getCmid() {
+        return cmid;
+    }
+
+    public void setCmid(Integer cmid) {
+        this.cmid = cmid;
     }
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.boot.shop.bean.CategoryBean;
-import com.boot.shop.bean.HotBean;
 import com.boot.shop.bean.ProductBean;
 import com.boot.shop.mapper.HotMapper;
 import com.boot.shop.mapper.ProductMapper;
@@ -35,7 +34,7 @@ public class HotController extends BaseController{
 		return "/hot/add";//带bean到add.html中
 	}
 	@PostMapping("/add")//表单提交
-	public String add(HotBean bean,HttpServletResponse resp){
+	public String add(ProductBean bean,HttpServletResponse resp){
 		int hot=bean.getHot();//设置一个变量来记录更新前的hot
 		hotMapper.updateById(bean);
 		if(hot==bean.getHot())//判断hot是否改变，跳转到该商品hot的页面

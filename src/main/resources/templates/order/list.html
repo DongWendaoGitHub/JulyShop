@@ -1,7 +1,7 @@
-<!--尖括号#list是freeMarker的for循环-->
-<!--    freeMarker语法，freeMarker类似jsp，就是在html界面中嵌入逻辑代码
-        1、取出数组 2、对这个数组进行for循环，每次循环产生的变量叫bean
--->
+<!-- 尖括号#list尖括号是freeMarker的for循环
+	freeMarker的语法，freeMarker类似jsp，就是在html页面中嵌入逻辑代码
+	作用：1.取出数组 2.对这个数组进行for循环，每次循环产生的变量叫bean
+ -->
 <!doctype html>
 <html>
 <head>
@@ -19,37 +19,33 @@
 <body>
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; " >
-        <li><a href="#">类别管理</a></li>
-        <li>查询类别</li>
+        <li><a href="#">订单管理</a></li>
+        <li>查询订单</li>
     </ul>
 </div>
 <form class="form-inline">
     <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
-        <a  class="btn btn-success"  href="#">查询订单</a>
+        <a  class="btn btn-success"  href="/order/list">刷新</a>
     </div>
     <div class="row" style="padding:15px; padding-top:0px; ">
         <table class="table  table-condensed table-striped">
             <tr>
                 <th>编号</th>
-                <th>姓名</th>
-                <th>手机</th>
-                <th>地址</th>
+                <th>用户id</th>
                 <th>总价</th>
                 <th>下单时间</th>
                 <th>操作</th>
             </tr>
             <#list retList as bean>
-            <tr>
-                <td>${(bean.id)!}</td>
-                <td>${(bean.name)!}</td>
-                <td>${(bean.mobile)!}</td>
-                <td>${(bean.address)!}</td>
-                <td>${(bean.total)!}元</td>
-                <td>${(bean.ctime)?string('yyyy-MM-dd HH:mm')}</td>
-                <th>
-                    <a href="/order/product?oid=${bean.id}">查看</a>
-                </th>
-            </tr>
+                <tr>
+                    <td>${(bean.id)!}</td>
+                    <td>${(bean.uid)!}</td>
+                    <td>${(bean.total)!}</td>
+                    <td>${(bean.ctime)?string('yyyy-MM-dd HH:mm')}</td>
+                    <th>
+                        <a href="/order/product?oid=${(bean.id)!}">查看</a>
+                    </th>
+                </tr>
             </#list>
         </table>
     </div>

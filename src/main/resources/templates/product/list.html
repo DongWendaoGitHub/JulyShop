@@ -1,7 +1,3 @@
-<!--尖括号#list是freeMarker的for循环-->
-<!--    freeMarker语法，freeMarker类似jsp，就是在html界面中嵌入逻辑代码
-        1、取出数组 2、对这个数组进行for循环，每次循环产生的变量叫bean
--->
 <!doctype html>
 <html>
 <head>
@@ -25,6 +21,8 @@
 </div>
 <form class="form-inline">
     <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
+
+        <input type="button"   class="btn btn-danger"     value="查询"/>
         <a  class="btn btn-success"  href="/product/add?cid=${cid}">添加商品</a>
         <a class="btn btn-warning" href="/category/list">返回上一级</a>
     </div>
@@ -37,35 +35,31 @@
                 <th>剩余数量</th>
                 <th>logo</th>
                 <th>热卖</th>
+                <th>销量</th>
+                <th>评论id</th>
                 <th>类别</th>
                 <th>操作</th>
             </tr>
             <#list retList as bean>
-            <tr>
-                <td>${(bean.id)!}</td>
-                <td>${(bean.product)!}</td>
-                <td>${(bean.price)!}元</td>
-                <td>${(bean.num)!}个</td>
-                <td>
-                    <a href="${(bean.logo)!}" target="_blank">
-                        ${(bean.logo)!}
-                    </a>
-                </td>
-                <td>
-                    <#if bean.hot == 1>热卖</#if>
-                    <#if bean.hot == 0>非热卖</#if>
-                </td>
-                <td>
-                    ${(bean.category)!}
-                </td>
-
-                <th>
-                    <a href="/product/add?id=${bean.id}&cid=${cid}">修改</a>
-                    <a href="/product/del?id=${bean.id}&cid=${cid}">删除</a>
-                </th>
-            </tr>
+                <tr>
+                    <td>${(bean.id)!}</td>
+                    <td>${(bean.product)!}</td>
+                    <td>${(bean.price)!}元</td>
+                    <td>${(bean.num)!}</td>
+                    <td>
+                        <a href="${(bean.logo)!}" target="blank">
+                            ${(bean.logo)!}
+                    </td>
+                    <td><#if bean.hot==1>热卖</#if><#if bean.hot==0>非热卖</#if></td>
+                    <td>${(bean.sale)!}</td>
+                    <td>${(bean.cmid)!}</td>
+                    <td>${(bean.cid)!}</td>
+                    <th>
+                        <a href="/product/add?id=${bean.id}&cid=${cid}">修改</a>
+                        <a href="/product/del?id=${bean.id}&cid=${cid}">删除</a>
+                    </th>
+                </tr>
             </#list>
-
         </table>
     </div>
 </form>
