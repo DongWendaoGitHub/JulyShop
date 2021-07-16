@@ -16,6 +16,9 @@ public class WxResp {
     public List<ProductBean> product;//商品数组
     public List<ProductBean> hot;//热卖数组
 
+    public List<CommentBean> comment;//评论数组
+    public List<OrderBean> order;//订单表
+    public UserBean user;//登录用户
 }
 
 

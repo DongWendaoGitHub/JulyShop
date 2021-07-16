@@ -14,4 +14,7 @@ public interface ProductMapper extends BaseMapper<ProductBean> {
 
     @Select("select * from tbl_product where hot=1")
     List<ProductBean> getHot();
+
+    @Select("select * from tbl_product order by sale desc")
+    List<ProductBean> getProductSale();
 }

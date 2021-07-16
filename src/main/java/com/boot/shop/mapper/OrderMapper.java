@@ -15,4 +15,7 @@ public interface OrderMapper extends BaseMapper<OrderBean> {
             + "left join tbl_product on tbl_shopping.pid = tbl_product.id "
             + "where oid=#{oid}")
     List<ProductBean> getProduct(@Param("oid")int oid);
+
+    @Select("Select * from tbl_order where uid=${uid}")
+    List<OrderBean> getOrder(@Param("uid")int uid);
 }
